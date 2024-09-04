@@ -4,57 +4,57 @@ import UsersController from '../controllers/UsersController';
 import AppController from '../controllers/AppController';
 import FilesController from '../controllers/FilesController';
 
-const myRouter = express.Router();
+const router = express.Router();
 
 // routes
 const routeController = (app) => {
-  app.use('/', myRouter);
+  app.use('/', router);
 
-  myRouter.get('/status', (req, res) => {
+  router.get('/status', (req, res) => {
     AppController.getStatus(req, res);
   });
 
-  myRouter.get('/stats', (req, res) => {
+  router.get('/stats', (req, res) => {
     AppController.getStats(req, res);
   });
 
-  myRouter.post('/users', (req, res) => {
+  router.post('/users', (req, res) => {
     UsersController.postNew(req, res);
   });
 
-  myRouter.get('/connect', (req, res) => {
+  router.get('/connect', (req, res) => {
     AuthController.getConnect(req, res);
   });
 
-  myRouter.get('/disconnect', (req, res) => {
+  router.get('/disconnect', (req, res) => {
     AuthController.getDisconnect(req, res);
   });
 
-  myRouter.get('/users/me', (req, res) => {
+  router.get('/users/me', (req, res) => {
     UsersController.getMe(req, res);
   });
 
-  myRouter.post('/files', (req, res) => {
+  router.post('/files', (req, res) => {
     FilesController.postUpload(req, res);
   });
 
-  myRouter.get('/files/:id', (req, res) => {
+  router.get('/files/:id', (req, res) => {
     FilesController.getShow(req, res);
   });
 
-  myRouter.get('/files', (req, res) => {
+  router.get('/files', (req, res) => {
     FilesController.getIndex(req, res);
   });
 
-  myRouter.put('/files/:id/publish', (req, res) => {
+  router.put('/files/:id/publish', (req, res) => {
     FilesController.putPublish(req, res);
   });
 
-  myRouter.put('/files/:id/unpublish', (req, res) => {
+  router.put('/files/:id/unpublish', (req, res) => {
     FilesController.putUnpublish(req, res);
   });
 
-  myRouter.post('/files/:id/data', (req, res) => {
+  router.post('/files/:id/data', (req, res) => {
     FilesController.getFile(req, res);
   });
 };

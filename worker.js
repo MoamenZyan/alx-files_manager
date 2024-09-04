@@ -3,9 +3,11 @@ import DBClient from './utils/db';
 const { ObjectId } = require('mongodb');
 const imageThumbnail = require('image-thumbnail');
 const fs = require('fs');
+
+const Bull = require('bull');
+
 const userQueue = new Bull('userQueue');
 const fileQueue = new Bull('fileQueue');
-const Bull = require('bull');
 
 const createThumbnail = async (path, options) => {
   try {
